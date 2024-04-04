@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table
+      author: damien
+      changes:
+        - createTable:
+            tableName: owners
+            columns:
+            - column:
+                name: id
+                type: varchar
+                constraints:
+                    primaryKey: true
+                    nullable: false
+            - column:
+                name: name
+                type: varchar
+                constraints:
+                    nullable: false
+            - column:
+                name: tax_number
+                type: varchar
+                constraints:
+                    nullable: false
+            - column:
+                name: phone_number
+                type: varchar
+                constraints:
+                    nullable: false
+            - column:
+                name: email
+                type: varchar
+                constraints:
+                    nullable: false
+            - column:
+                name: created_on
+                type: DATE
+            - column:
+                name: updated_on
+                type: DATE
