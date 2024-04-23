@@ -1,13 +1,13 @@
 databaseChangeLog:
   - changeSet:
-      id: create-table
+      id: create-owners-table
       author: damien
       changes:
         - createTable:
             tableName: owners
             columns:
             - column:
-                name: id
+                name: owner_id
                 type: uuid
                 constraints:
                     primaryKey: true
@@ -17,31 +17,62 @@ databaseChangeLog:
                 type: varchar
                 constraints:
                     nullable: false
-            - column:
-                name: last_name
-                type: varchar
-                constraints:
-                    nullable: false
-            - column:
-                name: tax_number
-                type: varchar
-                constraints:
-                    nullable: false
-            - column:
-                name: phone_number
-                type: varchar
-                constraints:
-                    nullable: false
-            - column:
-                name: email
-                type: varchar
-                constraints:
-                    nullable: false
-            - column:
-                name: created_on
-                constraints:
-                    nullable: false
-                type: timestamp
-            - column:
-                name: updated_on
-                type: timestamp
+#            - column:
+#                name: last_name
+#                type: varchar
+#                constraints:
+#                    nullable: false
+#            - column:
+#                name: tax_number
+#                type: varchar
+#                constraints:
+#                    nullable: false
+#            - column:
+#                name: phone_number
+#                type: varchar
+#                constraints:
+#                    nullable: false
+#            - column:
+#                name: email
+#                type: varchar
+#                constraints:
+#                    nullable: false
+#            - column:
+#                name: created_on
+#                type: timestamp
+#                constraints:
+#                    nullable: false
+#            - column:
+#                name: updated_on
+#                type: timestamp
+  - changeSet:
+      id: create-restaurants-table
+      author: damien
+      changes:
+        - createTable:
+            tableName: restaurants
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                      primaryKey: true
+                      nullable: false
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                      nullable: false
+#              - column:
+#                  name: active
+#                  type: boolean
+#                  constraints:
+#                    nullable: false
+#              - column:
+#                  name: created_on
+#                  constraints:
+#                      nullable: false
+#                  type: timestamp
+#              - column:
+#                  name: updated_on
+#                  type: timestamp

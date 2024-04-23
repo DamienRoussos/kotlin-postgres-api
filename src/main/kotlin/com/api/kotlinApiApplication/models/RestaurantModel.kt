@@ -1,7 +1,6 @@
 package com.api.kotlinApiApplication.models
 
 import jakarta.persistence.*
-import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
@@ -10,24 +9,19 @@ import java.time.LocalDateTime
 import java.util.UUID
 
 @Entity
-@Table(name = "owners")
-data class OwnerModel (
-
+@Table(name = "restaurant")
+data class RestaurantModel (
     @Id
-    @Column(name = "owner_id")
     @GeneratedValue(strategy = GenerationType.UUID)
-    val id: UUID?,
-    val firstName: String,
-//    val lastName: String,
-//    val taxNumber: String,
-//    val phoneNumber: String,
-//    val email: String,
+    val id: UUID,
+    val name: String,
+//    val active: Boolean,
 //    @CreationTimestamp
 //    val createdOn: LocalDateTime? = LocalDateTime.now(),
 //    @UpdateTimestamp
 //    val updatedOn: LocalDateTime?,
-//    @OneToMany
+//    @ManyToOne
 //    @Fetch(FetchMode.JOIN)
-//    @JoinColumn(name = "restaurant_id")
-//    val restaurants: List<RestaurantModel> = listOf()
+//    @JoinColumn(name = "owner_id")
+//    val owners: OwnerModel
 )

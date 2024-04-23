@@ -1,28 +1,25 @@
 package com.api.kotlinApiApplication.services
 
-import com.api.kotlinApiApplication.dtos.OwnerDto
 import com.api.kotlinApiApplication.models.OwnerModel
 import com.api.kotlinApiApplication.repositories.OwnerRepository
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
-interface OwnerService {
-
+class OwnerService(
+    private val repository: OwnerRepository
+) {
 //    Create an owner
-    fun createOwner(ownerDto: OwnerDto): OwnerDto
+    fun createOwner(owner: OwnerModel): OwnerModel = repository.save(owner)
 
 //    Retrieve all owners
-    fun getAll(): List<OwnerDto>
+    fun getAll(): MutableIterable<OwnerModel> = repository.findAll()
 
 //    Retrieve a single owner by id if exists
-//    fun getById(id: String): OwnerModel? = ownerRepository.findByIdOrNull(id)
+    fun getById(id: UUID): OwnerModel? = repository.findByIdOrNull(id)
 
 //    Delete an owner by id
-//    fun deleteById(id: String) {
-//        val deleted = ownerRepository.deleteById(id)
-//        return deleted
-//    }
+    fun deleteById(id: UUID) = repository.deleteById(id)
 
 }
