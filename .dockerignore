@@ -19,3 +19,5 @@ build/
 # Exclude Docker-related files
 Dockerfile*
 .dockerignore
+
+NOTES

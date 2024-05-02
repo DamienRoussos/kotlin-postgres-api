@@ -2,8 +2,8 @@ package com.api.kotlinApiApplication.controllers
 
 import com.api.kotlinApiApplication.models.OwnerModel
 import com.api.kotlinApiApplication.services.OwnerService
-import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
+import org.springframework.http.HttpStatus
 import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
@@ -27,6 +27,6 @@ class OwnerController(private val ownerService: OwnerService) {
     }
 
 //    @DeleteMapping("/{id}")
-    fun deleteById(@PathVariable id: UUID) = ownerService.deleteById(id)
+//    fun deleteById(@PathVariable id: UUID) = ownerService.deleteById(id)
 
 }

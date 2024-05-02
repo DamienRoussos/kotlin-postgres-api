@@ -1,7 +1,6 @@
 package com.api.kotlinApiApplication.models
 
 import jakarta.persistence.*
-import jakarta.persistence.Table
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.Fetch
 import org.hibernate.annotations.FetchMode
@@ -18,16 +17,12 @@ data class OwnerModel (
     @GeneratedValue(strategy = GenerationType.UUID)
     val id: UUID?,
     val firstName: String,
-//    val lastName: String,
-//    val taxNumber: String,
-//    val phoneNumber: String,
-//    val email: String,
-//    @CreationTimestamp
-//    val createdOn: LocalDateTime? = LocalDateTime.now(),
-//    @UpdateTimestamp
-//    val updatedOn: LocalDateTime?,
-//    @OneToMany
-//    @Fetch(FetchMode.JOIN)
-//    @JoinColumn(name = "restaurant_id")
-//    val restaurants: List<RestaurantModel> = listOf()
+    val lastName: String,
+    val taxNumber: String,
+    val phoneNumber: String,
+    val email: String,
+    @CreationTimestamp
+    val createdOn: LocalDateTime? = LocalDateTime.now(),
+    @UpdateTimestamp
+    val updatedOn: LocalDateTime?,
 )
