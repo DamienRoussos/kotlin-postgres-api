@@ -4,8 +4,6 @@ import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
 import java.util.UUID
 
 @Entity
@@ -28,18 +26,41 @@ data class RestaurantModel(
     val email: String,
     val websiteUrl: String?,
     val socialMediaProfiles: List<String>,
-    @ManyToOne
-    @Fetch(FetchMode.JOIN)
+    @OneToOne
     @JoinColumn(name = "owner_id")
-    val owners: OwnerModel,
-//    val ultimateBeneficialOwner: OwnerModel,
-//    val menuItems: List<MenuModel>,
-//    val ratings
-//    val cuisines
+    val ultimateBeneficialOwner: OwnerModel,
+    @OneToMany
+    @JoinTable(
+        name = "owners_of_restaurant",
+        joinColumns = arrayOf(JoinColumn(name = "restaurant_id")),
+        inverseJoinColumns = arrayOf(JoinColumn(name = "owner_id"))
+    )
+    val owners: List<OwnerModel>,
+    @OneToMany
+    @JoinTable(
+        name = "menuItems_of_restaurant",
+        joinColumns = arrayOf(JoinColumn(name = "restaurant_id")),
+        inverseJoinColumns = arrayOf(JoinColumn(name = "menuItem_id"))
+    )
+    val menuItems: List<MenuModel>?,
+    @OneToMany
+    @JoinTable(
+        name = "ratings_of_restaurant",
+        joinColumns = arrayOf(JoinColumn(name = "restaurant_id")),
+        inverseJoinColumns = arrayOf(JoinColumn(name = "rating_id"))
+    )
+    val ratings: List<RatingModel>?,
+    @OneToMany
+    @JoinTable(
+        name = "cuisines_of_restaurant",
+        joinColumns = arrayOf(JoinColumn(name = "restaurant_id")),
+        inverseJoinColumns = arrayOf(JoinColumn(name = "cuisine_id"))
+    )
+    val cuisines: List<CuisineModel>?,
 //    val paymentOptions
     @CreationTimestamp
     val createdOn: LocalDateTime? = LocalDateTime.now(),
     @UpdateTimestamp
     val updatedOn: LocalDateTime?,
 
-)
+    )

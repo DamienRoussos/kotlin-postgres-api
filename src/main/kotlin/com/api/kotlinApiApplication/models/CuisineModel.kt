@@ -3,14 +3,12 @@ package com.api.kotlinApiApplication.models
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "ratings")
-data class RatingsModel(
+@Table(name = "cuisines")
+data class CuisineModel(
 
     @Id
-    @Column(name = "rating_id")
+    @Column(name = "cuisine_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int,
-    val count: Int,
-    val rating: Float,
-    val ratingText: String?
+    val cuisineName: String
 )
